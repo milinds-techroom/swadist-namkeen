@@ -101,7 +101,7 @@ interface Product {
 })
 export class AppComponent implements OnInit, OnDestroy {
   // Paste your deployed Google Apps Script web-app URL here when ready.
-  private readonly GOOGLE_APPS_SCRIPT_URL = '';
+  private readonly GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxsHFRVpy5PdthUOf3p7Xz4wVJ42xHlMHJqjP0TDCh4cn99nIRH6oKamJS7nj1yahFi/exec';
 
   products: Product[] = [
     { name: '0 No. Shev', description: 'Crispy, light and full of flavour.', pack: '180 g', price: 60, image: 'images/reference/product-1.jpg', tag: 'Bestseller' },
