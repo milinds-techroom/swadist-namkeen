@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap');
+
+:root {
+  --swadist-green: #7b1e2b;
+  --swadist-green-dark: #3a1028;
+  --swadist-red: #d97706;
+  --swadist-gold: #f6c453;
+  --swadist-cream: #fff4df;
+  --swadist-ink: #321a24;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--swadist-ink);
+  background: #fffdf8;
+  font-family: 'DM Sans', Arial, sans-serif;
+}
+h1, h2, h3, .display-font { font-family: 'Playfair Display', Georgia, serif; }
+a { text-decoration: none; }
+section { scroll-margin-top: 84px; }
+.btn-swadist {
+  border: 0;
+  border-radius: 999px;
+  background: var(--swadist-green);
+  color: white;
+  padding: .78rem 1.4rem;
+  font-weight: 700;
+}
+.btn-swadist:hover { background: var(--swadist-green-dark); color: white; }
+.section-kicker {
+  color: var(--swadist-red);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-size: .78rem;
+}
+
+/* Diwali festive finish: maroon, saffron, gold and diya-inspired glow */
+.site-nav { background: rgba(58,16,40,.96); border-bottom: 1px solid #d6a64b; }
+.navbar .nav-link { color: #fff3d4; }
+.navbar .nav-link:hover { color: #ffd166; }
+.navbar-toggler { border-color: #d6a64b; }
+.navbar-toggler-icon { filter: invert(1); }
+.hero-section { background: radial-gradient(circle at 82% 25%, #74324c 0, #3a1028 45%, #240b1a 100%); }
+.hero-section:before { opacity: .22; background-image: radial-gradient(#ffd166 1px, transparent 1px); }
+.hero-glow { background: #f59e0b; opacity: .18; box-shadow: 0 0 90px 45px #f59e0b33; }
+.festival-pill { color: #ffe6a7; border-color: #b88738; background: #4a1a32; }
+.diya-dot, .hero-eyebrow, .hero-note span { color: #ffd166; }
+.hero-section h1 { color: #fff5df; }
+.hero-section h1 span, .section-heading h2 span, .about-title span { color: #ffc247; }
+.hero-copy, .hero-note { color: #f4dfd7; }
+.btn-outline-green { border-color: #ffd166; color: #ffe5a4; }
+.btn-outline-green:hover { background: #6b2545; color: white; }
+.hero-bottom-line { height: 6px; background: linear-gradient(90deg,#8b1e3f 0 25%,#f4a51c 25% 50%,#ffe08a 50% 75%,#8b1e3f 75%); }
+.trust-strip { background: #fff4df; border-bottom-color: #ead3a1; }
+.products-section, .order-section { background: #fff7e8; }
+.about-section { background: linear-gradient(135deg,#f8e6d2,#fff5df); }
+.section-heading h2, .about-title { color: #4b1732; }
+.section-kicker { color: #a23a22; }
+.product-card { border-color: #ead7b2; box-shadow: 0 10px 28px #5b1c3510; }
+.product-tag { color: #70213b; background: #ffedbd; }
+.order-form { border-color: #e5c58a; box-shadow: 0 16px 45px #6c2b2b12; }
+.form-section-title > span { background: #fff0c2; color: #7b1e2b; }
+.site-footer { background: #2b0b1d; border-top: 4px solid #d9952b; }
+@media (prefers-reduced-motion: no-preference) { .hero-glow { animation: diyaGlow 4s ease-in-out infinite alternate; } }
+@keyframes diyaGlow { from { opacity: .12; transform: scale(.96); } to { opacity: .25; transform: scale(1.04); } }

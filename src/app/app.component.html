@@ -1,0 +1,206 @@
+<nav class="navbar navbar-expand-lg sticky-top site-nav">
+  <div class="container py-1">
+    <a class="navbar-brand d-flex align-items-center" href="#home" aria-label="Swadist Namkeen home">
+      <img src="images/swadist-logo.png" alt="Swadist Namkeen official logo" class="brand-logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <div class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+        <a class="nav-link" href="#home">Home</a>
+        <a class="nav-link" href="#products">Our Namkeens</a>
+        <a class="nav-link" href="#about">About Us</a>
+        <a class="btn btn-swadist ms-lg-2" href="#order">Order Now <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <section id="home" class="hero-section" role="img" aria-label="Diwali special namkeen offer">
+    <div class="hero-content">
+      <h1>Make this Diwali crunchier and brighter.</h1>
+      <p>Celebrate Diwali with delicious namkeen for family gatherings, festive get-togethers and thoughtful snack gifting.</p>
+    </div>
+  </section>
+
+  <section class="trust-strip">
+    <div class="container">
+      <div class="row text-center g-3">
+        <div class="col-6 col-md-3"><span class="trust-icon">✺</span><strong>Classic Indian Flavours</strong></div>
+        <div class="col-6 col-md-3"><span class="trust-icon">♡</span><strong>Made for Sharing</strong></div>
+        <div class="col-6 col-md-3"><span class="trust-icon">✦</span><strong>Everyday Favourites</strong></div>
+        <div class="col-6 col-md-3"><span class="trust-icon">❋</span><strong>Festive Treats</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="products" class="products-section section-pad">
+    <div class="container">
+      <div class="section-heading text-center">
+        <span class="section-kicker">THE DIWALI SNACK TABLE</span>
+        <h2 class="mt-2">Diwali <span>Favourites</span></h2>
+        <p>Bring everyone together with savoury favourites for your festive table.</p>
+      </div>
+      <div class="slider-controls">
+        <button type="button" class="slider-arrow" aria-label="Previous products" (click)="previousSlide()">←</button>
+        <button type="button" class="slider-arrow" aria-label="Next products" (click)="nextSlide()">→</button>
+      </div>
+      <div class="product-window" (mouseenter)="pauseSlider()" (mouseleave)="resumeSlider()" (focusin)="pauseSlider()" (focusout)="resumeSlider()">
+        <!-- CSS reads --index; cards per view is controlled by CSS breakpoints -->
+        <div class="product-track" [style.--index]="slideIndex">
+          <article class="product-card" *ngFor="let product of products; let i = index">
+            <div class="product-image-wrap">
+              <span class="product-tag">{{ product.tag }}</span>
+              <img [src]="product.image" [alt]="product.name + ' snack'" loading="lazy">
+            </div>
+            <div class="product-info">
+              <span class="product-pack">{{ product.pack }} pack · illustrative listing</span>
+              <h3>{{ product.name }}</h3>
+              <p>{{ product.description }}</p>
+              <div class="product-card-bottom">
+                <strong class="product-price">₹{{ product.price }}</strong>
+                <!-- <button type="button" class="add-button" (click)="selectProduct(i)" [attr.aria-label]="'Add ' + product.name + ' to order'">+ Add</button> -->
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+      <p class="image-disclaimer text-center mt-3">Product photos, pack sizes and prices shown here are placeholders for the initial preview. Replace with verified official product assets and prices before publishing.</p>
+    </div>
+  </section>
+
+  <section id="about" class="about-section section-pad">
+    <div class="container">
+      <div class="row align-items-center g-4 g-lg-5">
+        <div class="col-12 col-lg-5">
+          <div class="about-art" role="img" aria-label="Assorted namkeen snacks">
+            <div class="about-circle"></div>
+            <div class="about-snack-card"><span>✺</span><span>✦</span><span>✳</span></div>
+            <div class="about-stamp">GOOD FOOD<br>GOOD TIMES</div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-7">
+          <span class="section-kicker">MADE FOR FESTIVE MOMENTS</span>
+          <h2 class="about-title mt-2">Good snacks make <span>Diwali brighter.</span></h2>
+          <p class="about-copy">At Swadist Namkeen, every gathering deserves something delicious to pass around. Make your Diwali get-togethers extra special with familiar Indian snack flavours everyone can enjoy.</p>
+          <p class="about-copy">Explore the range, choose your favourites and send us your order request through our simple form.</p>
+          <a href="#order" class="btn btn-swadist mt-2">Order your favourites →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="order" class="order-section section-pad">
+    <div class="container">
+      <div class="section-heading text-center">
+        <span class="section-kicker">YOUR DIWALI ORDER</span>
+        <h2 class="mt-2">Order your <span>Favourites</span></h2>
+        <p>Choose your snacks and share your contact details. The shop will confirm your order.</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-12 col-xl-9">
+          <form class="order-form" [formGroup]="orderForm" (ngSubmit)="submitOrder()" novalidate>
+            <div class="form-section-title"><span>01</span><div><strong>Your details</strong><small>Where can we reach you?</small></div></div>
+            <div class="row g-3 mb-4">
+              <div class="col-12 col-md-6">
+                <label for="customerName" class="form-label">Full name *</label>
+                <input id="customerName" class="form-control" formControlName="customerName" autocomplete="name" placeholder="Enter your name">
+                <small class="field-error" *ngIf="orderForm.controls['customerName'].touched && orderForm.controls['customerName'].invalid">Please enter at least 2 characters.</small>
+              </div>
+              <div class="col-12 col-md-6">
+                <label for="phone" class="form-label">Mobile number *</label>
+                <input id="phone" type="tel" class="form-control" formControlName="phone" inputmode="numeric" autocomplete="tel-national" maxlength="10" placeholder="10-digit mobile number">
+                <small class="field-error" *ngIf="orderForm.controls['phone'].touched && orderForm.controls['phone'].invalid">Enter a valid 10-digit Indian mobile number.</small>
+              </div>
+              <div class="col-12">
+                <label for="address" class="form-label">Delivery address *</label>
+                <textarea id="address" class="form-control" formControlName="address" autocomplete="street-address" rows="2" placeholder="House / street, area, city, PIN code"></textarea>
+                <small class="field-error" *ngIf="orderForm.controls['address'].touched && orderForm.controls['address'].invalid">Please enter a complete delivery address.</small>
+              </div>
+            </div>
+
+            <div class="form-section-title"><span>02</span><div><strong>Choose your namkeens</strong><small>Set the quantity for each product</small></div></div>
+            <div class="order-product-list" formArrayName="items">
+              <div class="order-product-row" *ngFor="let product of products; let i = index">
+                <div class="order-product-name"><strong>{{ product.name }}</strong><small>{{ product.pack }} · ₹{{ product.price }} each</small></div>
+                <div class="quantity-control">
+                  <button type="button" (click)="itemControls.at(i).setValue(MathMax(0, Number(itemControls.at(i).value || 0) - 1))" [attr.aria-label]="'Decrease ' + product.name">−</button>
+                  <input type="number" inputmode="numeric" min="0" max="99" [formControlName]="i" [attr.aria-label]="product.name + ' quantity'">
+                  <button type="button" (click)="itemControls.at(i).setValue(MathMin(99, Number(itemControls.at(i).value || 0) + 1))" [attr.aria-label]="'Increase ' + product.name">+</button>
+                </div>
+              </div>
+            </div>
+            <div class="total-row"><span>{{ selectedCount }} item(s) selected</span><div><small>Estimated total</small><strong>₹{{ total }}</strong></div></div>
+            <div class="mt-3 mb-4">
+              <label for="notes" class="form-label">Additional note (optional)</label>
+              <textarea id="notes" class="form-control" formControlName="notes" rows="2" placeholder="Any delivery instructions?"></textarea>
+            </div>
+            <div class="alert alert-success" *ngIf="orderMessage" role="status">{{ orderMessage }}</div>
+            <div class="alert alert-danger" *ngIf="orderError" role="alert">{{ orderError }}</div>
+            <button type="submit" class="btn btn-swadist btn-lg w-100" [disabled]="isSubmitting">{{ isSubmitting ? 'Sending order…' : 'Submit Order Request →' }}</button>
+            <p class="form-privacy-note">This is an order request, not a payment. The shop should confirm availability, final price and delivery before the order is accepted.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Replace the OLD stats + company-info sections with this (paste inside <main>) -->
+<section class="stats-section" aria-labelledby="statsTitle">
+  <div class="container">
+    <div class="stats-head text-center">
+      <span class="stats-kicker">OUR JOURNEY</span>
+      <h2 id="statsTitle">Swadist Namkeen <span>in numbers</span></h2>
+    </div>
+
+    <div class="stats-grid">
+      <article class="stat-card">
+        <span class="stat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        </span>
+        <span class="stat-number" [appCountUp]="25">25</span>
+        <span class="stat-label">Cities</span>
+      </article>
+
+      <article class="stat-card">
+        <span class="stat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg>
+        </span>
+        <span class="stat-number" [appCountUp]="35">35</span>
+        <span class="stat-label">Distributors</span>
+      </article>
+
+      <article class="stat-card">
+        <span class="stat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l1.5-5h13L20 9M4 9h16M4 9a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0A2.7 2.7 0 0 0 20 9M5.5 12v8h13v-8"/></svg>
+        </span>
+        <span class="stat-number" [appCountUp]="1000" suffix="+">1,000+</span>
+        <span class="stat-label">Retailers</span>
+      </article>
+
+      <article class="stat-card">
+        <span class="stat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>
+        </span>
+        <span class="stat-number" [appCountUp]="200000" [duration]="2800" suffix="+">200,000+</span>
+        <span class="stat-label">Happy Customers</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container py-4">
+    <div class="row align-items-center gy-3">
+      <div class="col-12 col-md-4"><img src="images/swadist-logo.png" alt="Swadist Namkeen logo" class="footer-logo"></div>
+      <div class="col-12 col-md-4 text-md-center"><a href="#home">Home</a><a href="#products">Namkeens</a><a href="#about">About</a><a href="#order">Order</a></div>
+      <div class="col-12 col-md-4 text-md-end footer-caption">Made for sharing moments and flavours.</div>
+    </div>
+    <hr>
+    <div class="footer-bottom"><span>© {{ currentYear }} Swadist Namkeen</span><span>Festive flavours. Everyday joy.</span></div>
+  </div>
+</footer>
